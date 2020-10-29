@@ -6,6 +6,11 @@ contract('BankingApp', (accounts) => {
         const balance = await instance.getBalance();
         assert.equal(balance.valueOf(), 20000, "20000 Wasn't in the first account")
     });
+    it('Should put 20000 in the origin account', async () => {
+        const instance = await BankingApp.deployed();
+        const balance = await instance.getBalanceWithAddress.call(accounts[0]);
+        assert.equal(balance.valueOf(), 20000, "20000 Wasn't in the first account")
+    });
     it('Can deposit into account', async () => {
         const instance = await BankingApp.deployed();
         const balanceBefore = await instance.getBalance.call();

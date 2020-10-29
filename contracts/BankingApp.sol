@@ -35,11 +35,11 @@ contract BankingApp {
         return amount;
     }
 
-    function getBalance(address addr) public view returns (uint256) {
+    function getBalanceWithAddress(address addr) public view returns (uint256) {
         return balances[addr];
     }
 
     function getBalance() public view returns (uint256) {
-        return getBalance(msg.sender);
+        return getBalanceWithAddress(msg.sender);
     }
 }
